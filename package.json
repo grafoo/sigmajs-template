@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "graphology": "^0.25.1",
+    "graphology-gexf": "^0.10.3",
     "graphology-layout": "^0.6.1",
     "graphology-layout-forceatlas2": "^0.10.1",
     "sigma": "^2.4.0"

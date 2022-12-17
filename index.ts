@@ -8,7 +8,31 @@ import { animateNodes } from "sigma/utils/animate";
 import FA2Layout from "graphology-layout-forceatlas2/worker";
 import forceAtlas2 from "graphology-layout-forceatlas2";
 
+import { parse } from "graphology-gexf/browser";
+
 import data from "./data.json";
+
+
+
+//const graph = new Graph();
+
+// define data inline
+
+//graph.addNode("foo", { x: 0, y: 10, size: 5, label: "foo", color: "blue" });
+//graph.addNode("bar", { x: 10, y: 0, size: 3, label: "bar", color: "red" });
+//
+//graph.addEdge("foo", "bar");
+
+// import data from json
+
+//graph.import(data);
+
+// parse data from gexf
+
+fetch("./data.gexf")
+  .then((res) => res.text())
+  .then((gexf) => {
+    const graph =parse(Graph, gexf);
 
 const container = document.getElementById("app-container") as HTMLElement;
 
@@ -26,16 +50,6 @@ const FA2StartLabel = document.getElementById("forceatlas2-start-label") as HTML
 const randomButton = document.getElementById("random") as HTMLElement;
 
 const circularButton = document.getElementById("circular") as HTMLElement;
-
-
-const graph = new Graph();
-
-//graph.addNode("foo", { x: 0, y: 10, size: 5, label: "foo", color: "blue" });
-//graph.addNode("bar", { x: 10, y: 0, size: 3, label: "bar", color: "red" });
-//
-//graph.addEdge("foo", "bar");
-
-graph.import(data);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const renderer = new Sigma(graph, container);
@@ -261,3 +275,4 @@ function circularLayout() {
 
 // bind method to the random button
 circularButton.addEventListener("click", circularLayout);
+});
