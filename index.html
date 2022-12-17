@@ -17,8 +17,73 @@
         padding: 0;
         overflow: hidden;
       }
+      #controls {
+        position: absolute;
+        right: 1em;
+        top: 1em;
+        display: flex;
+      }
+      #controls > button {
+        margin-right: 1em;
+        display: inline-block;
+        text-align: center;
+        background: white;
+        outline: none;
+        border: 1px solid dimgrey;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      #controls > button img {
+        height: 2em;
+      }
+      #controls > button > span {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      #controls > button:last-child {
+        margin-right: 0;
+      }
+
+      details {
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        padding: .2em .2em 0;
+      }
+      summary {
+          font-weight: bold;
+          margin: -.2em -.2em 0;
+          padding: .2em;
+      }
+      details[open] {
+          padding: .2em;
+      }
+      details[open] summary {
+          border-bottom: 1px solid #aaa;
+          margin-bottom: .2em;
+      }
     </style>
     <div id="app-container"></div>
+    <div id="controls">
+      <input type="search" id="search-input" list="suggestions" placeholder="Type to search..." />
+      <datalist id="suggestions"></datalist>
+      <details>
+        <summary>Layout</summary>
+        <button id="random">
+          <span><img src="./GiPerspectiveDiceSixFaces.svg" />random</span>
+        </button>
+        <button id="forceatlas2">
+          <span>
+            <img id="forceatlas2-start-label" src="./BiPlay.svg" />
+            <img id="forceatlas2-stop-label" style="display: none" src="./BiPause.svg" />
+            Force Atlas 2
+          </span>
+        </button>
+        <button id="circular">
+          <span><img src="./BiLoaderCircle.svg" />circular</span>
+        </button>
+      </details>
+    </div>
     <script src="build/bundle.js"></script>
   </body>
 </html>
